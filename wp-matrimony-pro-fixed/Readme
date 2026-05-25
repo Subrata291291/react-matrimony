@@ -1,0 +1,387 @@
+# WP Matrimony Pro — Project Progress & Setup Notes
+
+## Project Overview
+
+Custom WordPress Matrimony Plugin built for:
+
+* Member registration
+* Member profiles
+* Search & filters
+* Chat system
+* Admin member management
+* Editable user profiles
+* Approval system
+
+Plugin Folder:
+`/wp-content/plugins/wp-matrimony-pro/`
+
+---
+
+# COMPLETED FEATURES
+
+## 1. Home Page Search Redirect
+
+Fixed homepage search form.
+
+### Working Flow
+
+Homepage search form now redirects to:
+
+```php
+http://localhost/lamp/members/
+```
+
+with query parameters:
+
+```php
+?gender=women&seeking=man&age_from=18&age_to=29
+```
+
+---
+
+## 2. Members Page Filtering
+
+Search filters now work correctly on members page.
+
+File involved:
+
+```php
+includes/class-members.php
+```
+
+Filtering uses:
+
+```php
+$_GET['gender']
+$_GET['seeking']
+$_GET['age_from']
+$_GET['age_to']
+```
+
+---
+
+## 3. Default Profile Image
+
+Added fallback image for users without profile photos.
+
+Used in:
+
+```php
+wpm_get_profile_photo()
+```
+
+Fallback image path:
+
+```php
+assets/images/default-user.png
+```
+
+---
+
+## 4. Admin Member Panel
+
+Created custom admin page:
+
+```php
+Matrimony Users
+```
+
+Features:
+
+* user list
+* profile photo
+* email
+* gender
+* status
+* edit button
+
+---
+
+## 5. Admin Edit User Feature
+
+Created dedicated edit page per user.
+
+Features:
+
+* edit gender
+* edit phone
+* edit age
+* edit location
+* approval status
+
+---
+
+## 6. Profile Page System
+
+Profile URL format:
+
+```php
+/profile/username
+```
+
+File:
+
+```php
+templates/single-profile.php
+```
+
+Displays:
+
+* cover image
+* profile image
+* about
+* hobbies
+* partner expectations
+* gallery
+* online status
+
+---
+
+## 7. Login Restriction on Profiles
+
+Guest users see blurred content.
+
+Login required for:
+
+* full profile
+* sending messages
+
+---
+
+## 8. Chat Popup System
+
+Chat opens as popup now.
+
+NO redirect to:
+
+```php
+/chat/?user=id
+```
+
+Instead opens modal/popup directly on profile page.
+
+---
+
+# IMPORTANT CHAT FILES
+
+## JS File
+
+```php
+assets/js/chat.js
+```
+
+Important feature added:
+
+```javascript
+.wpm-start-chat
+```
+
+This opens popup chat from profile page.
+
+---
+
+## Chat Template
+
+```php
+templates/chat-box.php
+```
+
+Contains:
+
+* sidebar
+* conversations
+* messages
+* send form
+
+---
+
+## Important Fix
+
+In:
+
+```php
+templates/single-profile.php
+```
+
+CHAT section was broken because of incorrect PHP condition closing.
+
+Fixed section now works properly.
+
+---
+
+# IMPORTANT FILES
+
+## Core Files
+
+```php
+includes/class-members.php
+includes/class-profile.php
+includes/class-chat.php
+includes/class-search.php
+includes/class-rewrites.php
+```
+
+---
+
+## Templates
+
+```php
+templates/single-profile.php
+templates/search-results.php
+templates/chat-box.php
+templates/profile-edit.php
+```
+
+---
+
+# CURRENT STATUS
+
+## Working
+
+* member profiles
+* member search
+* filters
+* admin member list
+* popup chat
+* profile pages
+* approval system
+
+---
+
+# NEXT FEATURES TO BUILD
+
+## Pending Improvements
+
+### 1. Better Chat UI
+
+Need:
+
+* unread count
+* typing status
+* online/offline badges
+* mobile responsive chat
+
+---
+
+### 2. Advanced Profile Fields
+
+Need fields like:
+
+* religion
+* caste
+* education
+* occupation
+* salary
+* partner preferences
+* hobbies
+* languages
+
+---
+
+### 3. Profile Completion Percentage
+
+---
+
+### 4. Premium Membership System
+
+---
+
+### 5. Match Recommendation System
+
+---
+
+### 6. Notifications
+
+---
+
+### 7. Photo Privacy System
+
+---
+
+### 8. Shortcode Support
+
+---
+
+# IMPORTANT NOTES
+
+## Chat Popup Include
+
+Always include:
+
+```php
+include WPM_PLUGIN_PATH . 'templates/chat-box.php';
+```
+
+before:
+
+```php
+get_footer();
+```
+
+---
+
+## jQuery Required
+
+Chat system depends on:
+
+```javascript
+jQuery
+```
+
+---
+
+## Rewrite Rules
+
+If profile pages break:
+
+Go to:
+
+```php
+Settings > Permalinks
+```
+
+and click:
+
+```php
+Save Changes
+```
+
+---
+
+# CURRENT PROFILE URL
+
+```php
+http://localhost/lamp/profile/username
+```
+
+---
+
+# MEMBERS PAGE
+
+```php
+http://localhost/lamp/members/
+```
+
+---
+
+# CHAT SYSTEM
+
+Popup based.
+
+Triggered by:
+
+```html
+<button class="wpm-start-chat">
+```
+
+---
+
+# FINAL NOTE
+
+Project is heavily customized now.
+
+Before major edits:
+
+* keep backups
+* copy working files
+* test one feature at a time

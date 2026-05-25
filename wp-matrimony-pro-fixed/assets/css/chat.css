@@ -1,0 +1,1367 @@
+/* =========================================
+MESSENGER PREMIUM CHAT UI
+========================================= */
+
+/* WRAPPER */
+
+.wpm-chat-wrapper {
+
+    position: fixed;
+
+    bottom: 20px;
+    right: 20px;
+
+    z-index: 1022;
+
+    font-family: sans-serif;
+
+}
+
+/* =========================================
+PREMIUM CHAT BUTTON
+========================================= */
+
+.wpm-chat-toggle {
+
+    position: fixed;
+
+    bottom: 12%;
+    right: 25px;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(to bottom, #ff5a61 0%, #ff767b 100%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 99999;
+
+    box-shadow:
+        0 10px 35px rgba(24,119,242,.35);
+
+    transition: .3s ease;
+
+}
+
+.wpm-chat-toggle:hover {
+
+    transform: scale(1.08);
+
+}
+
+.wpm-chat-toggle-icon {
+
+    color: white;
+
+    font-size: 28px;
+
+}
+
+.wpm-chat-toggle-text {
+
+    display: none;
+
+}
+
+/* NOTIFICATION */
+
+.wpm-chat-notification {
+
+    position: absolute;
+
+    top: -2px;
+    right: -2px;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: #ff2d55;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid white;
+
+    box-shadow:
+        0 5px 15px rgba(255,45,85,.4);
+
+}
+.wpm-profile-hero-content .wpm-online-dot {
+    right: 15px;
+    top: 15px;
+}
+.wpm-online-dot {
+	animation: 1.5s ease 0s infinite normal none running pulse;
+}
+@-webkit-keyframes pulse {
+    100% {
+        box-shadow: rgba(232, 76, 61, 0) 0px 0px 0px 15px;
+    }
+}
+
+@keyframes pulse {
+    100% {
+        box-shadow: rgba(232, 76, 61, 0) 0px 0px 0px 15px;
+    }
+}
+.wpm-matches-slider .wpm-online-dot {
+    right: 15px;
+    top: 15px;
+}
+#wpm-members-wrapper .wpm-online-dot {
+    right: 15px;
+    top: 15px;
+}
+#wpm-members-results .wpm-online-dot {
+    right: 15px;
+    top: 15px;
+}
+/* =========================================
+CHAT WINDOW
+========================================= */
+
+.wpm-chat-window {
+
+    width: 900px;
+
+    height: 650px;
+
+    background: #fff;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.15);
+
+    animation: chatUp .3s ease;
+
+}
+
+/* =========================================
+SIDEBAR
+========================================= */
+
+.wpm-chat-sidebar {
+
+    width: 320px;
+
+    background: #fff;
+
+    border-right: 1px solid #edf0f5;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+/* SIDEBAR TOP */
+
+.wpm-chat-sidebar-top {
+
+    padding: 24px;
+
+    border-bottom: 1px solid #edf0f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.wpm-chat-sidebar-top h3 {
+    color: #000;
+    margin: 0;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+}
+
+/* =========================================
+USER LIST
+========================================= */
+
+.wpm-chat-users {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+}
+
+/* USER */
+
+.wpm-chat-user {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+    border-bottom:
+        1px solid #f1f3f7;
+
+}
+
+.wpm-chat-user:hover {
+
+    background: #f3f7ff;
+
+}
+
+.wpm-chat-user.active {
+
+    background: #e8f1ff;
+
+}
+
+/* LEFT */
+
+.wpm-chat-user-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+/* IMAGE */
+
+.wpm-chat-user-image {
+
+    position: relative;
+
+}
+
+.wpm-chat-user-image img {
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 3px solid white;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.08);
+
+}
+
+/* ONLINE */
+
+.wpm-online-dot {
+
+    width: 14px;
+    height: 14px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    right: 2px;
+    bottom: 2px;
+
+    border: 2px solid white;
+
+    box-shadow:
+        0 0 10px #22c55e;
+
+}
+
+/* CONTENT */
+
+.wpm-chat-user-content h5 {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #111827;
+
+}
+
+.wpm-chat-user-content p {
+
+    margin: 4px 0 0;
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    max-width: 180px;
+
+}
+
+/* UNREAD */
+
+.wpm-unread-count {
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: #ff767b;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+/* =========================================
+RIGHT CHAT AREA
+========================================= */
+
+.wpm-chat-box {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #f5f7fb;
+
+    position: relative;
+
+}
+
+/* =========================================
+HEADER
+========================================= */
+
+.wpm-chat-header {
+
+    height: 90px;
+
+    background: white;
+
+    border-bottom: 1px solid #edf0f5;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 25px;
+
+}
+
+/* LEFT */
+
+.wpm-chat-header-user {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+/* AVATAR */
+
+.wpm-chat-header-avatar {
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    background: #ddd;
+
+}
+
+/* STATUS */
+
+.wpm-chat-status {
+
+    color: #22c55e;
+
+    font-size: 13px;
+
+}
+
+/* ACTIONS */
+
+.wpm-chat-header-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+.wpm-chat-header-actions button {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #f0f2f5;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.wpm-chat-header-actions button:hover {
+
+    background: #e3ebf7;
+
+}
+.wpm-chat-sidebar-top button {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #f0f2f5;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.wpm-chat-sidebar-top button:hover {
+
+    background: #e3ebf7;
+
+}
+
+/* =========================================
+MESSAGES
+========================================= */
+
+.wpm-chat-messages {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    overflow-anchor: none;
+
+    overscroll-behavior: contain;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    position: relative;
+
+}
+
+/* EMPTY */
+
+.wpm-chat-messages:empty::before {
+
+    content:
+        'Select a conversation to start chatting';
+
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;   
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    color: #9ca3af;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+}
+
+/* MESSAGE */
+
+/* =========================================
+FIX MESSAGE BUBBLES
+========================================= */
+
+.wpm-chat-message {
+
+    display: inline-flex;
+
+    flex-direction: column;
+
+    width: fit-content;
+
+    max-width: 75%;
+
+}
+
+/* BUBBLE */
+
+.wpm-chat-bubble {
+
+    display: inline-flex;
+
+    flex-direction: column;
+
+    width: auto;
+
+    max-width: 100%;
+
+    padding: 14px 18px;
+
+    border-radius: 22px;
+
+    line-height: 1.5;
+
+    word-break: break-word;
+
+    overflow-wrap: break-word;
+
+    position: relative;
+
+}
+
+/* MESSAGE ACTIONS */
+
+.wpm-message-actions {
+
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    margin: 0;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .2s ease;
+
+    z-index: 2;
+
+}
+
+.wpm-chat-message.sent .wpm-chat-bubble:hover .wpm-message-actions,
+.wpm-chat-message.sent .wpm-chat-bubble:focus-within .wpm-message-actions {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+}
+
+.wpm-message-actions button {
+
+    width: 24px;
+    height: 24px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.28);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: .2s ease;
+
+}
+
+.wpm-message-actions button:hover {
+
+    background: rgba(255,255,255,.45);
+
+}
+
+.wpm-chat-message.sent .wpm-chat-bubble:hover .wpm-chat-text,
+.wpm-chat-message.sent .wpm-chat-bubble:focus-within .wpm-chat-text {
+
+    padding-top: 22px;
+
+}
+
+.wpm-message-edit-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    min-width: 220px;
+
+}
+
+.wpm-message-edit-input {
+
+    width: 100%;
+
+    min-height: 76px;
+
+    border: 1px solid rgba(255,255,255,.55);
+
+    border-radius: 12px;
+
+    padding: 10px;
+
+    resize: vertical;
+
+    outline: none;
+
+    color: #111827;
+
+    background: white;
+
+    font: inherit;
+
+}
+
+.wpm-message-edit-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+}
+
+.wpm-message-edit-actions button {
+
+    border: none;
+
+    border-radius: 999px;
+
+    padding: 6px 12px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+.wpm-message-save-btn {
+
+    background: white;
+
+    color: #ff5a61;
+
+}
+
+.wpm-message-cancel-btn {
+
+    background: rgba(255,255,255,.22);
+
+    color: white;
+
+}
+
+/* TEXT */
+
+.wpm-chat-text{
+
+    display:block;
+
+    line-height: 0;
+
+}
+
+.wpm-chat-text a,
+.wpm-chat-text br {
+
+    line-height: 1.5;
+
+}
+
+.wpm-chat-text:not(:has(img)) {
+
+    line-height: 1.5;
+
+}
+
+/* TIME */
+
+.wpm-chat-time{
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    opacity:.8;
+
+}
+
+.wpm-chat-message.sent {
+
+    align-self: flex-end;
+
+}
+
+.wpm-chat-message.received {
+
+    align-self: flex-start;
+
+}
+
+/* SENT */
+
+.wpm-chat-message.sent .wpm-chat-bubble {
+
+    background:
+        linear-gradient(to bottom, #ff5a61 0%, #ff767b 100%);
+
+    color: white;
+
+    border-bottom-right-radius: 5px;
+
+}
+
+/* RECEIVED */
+
+.wpm-chat-message.received .wpm-chat-bubble {
+
+    background: white;
+
+    color: #111827;
+
+    border-bottom-left-radius: 5px;
+
+}
+
+/* TIME */
+
+.wpm-chat-time {
+
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    opacity: .8;
+
+}
+
+/* STATUS */
+
+.wpm-message-status {
+
+    margin-left: 8px;
+
+    font-size: 11px;
+
+}
+
+/* =========================================
+FOOTER
+========================================= */
+
+.wpm-chat-footer {
+
+    background: white;
+
+    padding: 20px;
+
+    border-top: 1px solid #edf0f5;
+
+}
+
+/* INPUT WRAP */
+
+.wpm-chat-input-wrap {
+
+    display: flex;
+
+    align-items: center;
+
+    background: #f0f2f5;
+
+    border-radius: 50px;
+
+    padding: 8px;
+
+    transition: .3s;
+
+}
+
+.wpm-chat-input-wrap:focus-within {
+
+    background: #e9f2ff;
+
+    box-shadow:
+        0 0 0 3px rgba(24,119,242,.1);
+
+}
+
+/* INPUT */
+
+.wpm-chat-input-wrap input {
+
+    flex: 1;
+
+    border: none;
+
+    background: transparent;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    outline: none;
+
+}
+
+/* BUTTONS */
+
+.wpm-send-btn,
+.wpm-emoji-btn {
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    color: #ff767b;
+
+    font-size: 18px;
+
+    transition: .3s;
+
+}
+
+.wpm-send-btn:hover {
+
+    transform: scale(1.1);
+
+}
+
+/* =========================================
+SCROLLBAR
+========================================= */
+
+.wpm-chat-users::-webkit-scrollbar,
+.wpm-chat-messages::-webkit-scrollbar {
+
+    width: 6px;
+
+}
+
+.wpm-chat-users::-webkit-scrollbar-thumb,
+.wpm-chat-messages::-webkit-scrollbar-thumb {
+
+    background: #d0d7e2;
+
+    border-radius: 20px;
+
+}
+
+/* =========================================
+ANIMATION
+========================================= */
+
+@keyframes chatUp {
+
+    from {
+
+        transform:
+            translateY(40px);
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform:
+            translateY(0);
+
+        opacity: 1;
+
+    }
+
+}
+/* =========================================
+MOBILE BACK BUTTON
+========================================= */
+
+.wpm-mobile-back{
+
+    display:none;
+
+    width:38px;
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f0f2f5;
+
+    cursor:pointer;
+
+    margin-right:10px;
+
+    flex-shrink:0;
+
+}
+/* =========================================
+FILE BUTTON
+========================================= */
+
+.wpm-file-upload-btn{
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    color:#ff767b;
+
+    font-size:18px;
+
+    flex-shrink:0;
+
+    transition:.3s;
+
+}
+
+.wpm-file-upload-btn:hover{
+
+    background:#e9f2ff;
+
+}
+/* =========================================
+CHAT FILE
+========================================= */
+
+.wpm-chat-file{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 16px;
+
+    background:white;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:#ff767b;
+
+    font-weight:600;
+
+}
+/* =========================================
+CHAT IMAGE
+========================================= */
+
+.wpm-chat-image{
+
+    width:auto;
+
+    max-width:220px;
+
+    max-height:280px;
+
+    border-radius:18px;
+
+    display:block;
+
+    margin-top:0;
+
+    object-fit:contain;
+
+}
+
+/* =========================================
+FILE LINK
+========================================= */
+
+.wpm-chat-file{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 16px;
+
+    background:white;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:#ff767b;
+
+    font-weight:600;
+
+}
+.wpm-chat-file:hover{
+
+    background:#f3f7ff;
+
+}
+/* =========================================
+MOBILE CHAT UI
+========================================= */
+
+@media(max-width:767px){
+
+    .wpm-mobile-back{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+    }
+
+    /* WINDOW */
+
+    .wpm-chat-window{
+
+        width:100vw;
+
+        height:100vh;
+
+        position:fixed;
+
+        inset:0;
+
+        border-radius:0;
+
+        display:flex;
+
+    }
+
+    /* SIDEBAR */
+
+    .wpm-chat-sidebar{
+
+        width:100%;
+
+        height:100%;
+
+        position:absolute;
+
+        left:0;
+
+        top:0;
+
+        z-index:20;
+
+        background:#fff;
+
+        transition:.3s;
+
+    }
+
+    /*
+    HIDE SIDEBAR
+    WHEN CHAT ACTIVE
+    */
+
+    .wpm-chat-window.chat-opened
+    .wpm-chat-sidebar{
+
+        transform:translateX(-100%);
+
+    }
+
+    /* CHAT AREA */
+
+    .wpm-chat-box{
+
+        width:100%;
+
+        height:100%;
+
+    }
+
+    /* HEADER */
+
+    .wpm-chat-header{
+
+        height:75px;
+
+        padding:0 15px;
+
+    }
+
+    .wpm-chat-header-avatar{
+
+        width:42px;
+        height:42px;
+
+    }
+
+    .wpm-chat-username{
+        text-transform: uppercase;
+        font-size:16px;
+
+    }
+
+    .wpm-chat-status{
+
+        font-size:12px;
+
+    }
+
+    /* ACTIONS */
+
+    .wpm-chat-header-actions{
+
+        gap:6px;
+
+    }
+
+    .wpm-chat-header-actions button{
+
+        width:38px;
+        height:38px;
+
+    }
+
+    /* MESSAGES */
+
+    .wpm-chat-messages{
+
+        padding:15px;
+
+        gap:10px;
+
+    }
+
+    .wpm-chat-message{
+
+        max-width:85%;
+
+    }
+
+    .wpm-chat-bubble{
+
+        padding:12px 14px;
+
+        font-size:14px;
+
+    }
+
+    /* FOOTER */
+
+    .wpm-chat-footer{
+
+        padding:12px;
+
+    }
+
+    .wpm-chat-input-wrap{
+
+        padding:6px;
+
+    }
+
+    .wpm-chat-input-wrap input{
+
+        height:42px;
+
+        font-size:14px;
+
+    }
+
+    .wpm-send-btn,
+    .wpm-emoji-btn{
+
+        width:42px;
+        height:42px;
+
+        font-size:16px;
+
+    }
+
+    /* CHAT LIST */
+
+    .wpm-chat-user{
+
+        padding:15px;
+
+    }
+
+    .wpm-chat-user-image img{
+
+        width:50px;
+        height:50px;
+
+    }
+
+    .wpm-chat-user-content h5{
+
+        font-size:15px;
+
+    }
+
+    .wpm-chat-user-content p{
+
+        font-size:12px;
+
+    }
+
+    /* FLOAT BUTTON */
+
+    .wpm-chat-toggle{
+
+        width:58px;
+        height:58px;
+
+        bottom:10%;
+        right:15px;
+
+    }
+
+    .wpm-chat-toggle-icon{
+
+        font-size:22px;
+
+    }
+	.wpm-chat-window{
+
+        width:100vw;
+
+   	   height:100dvh;
+
+    }
+
+    .wpm-chat-box{
+
+        height:100dvh;
+
+    }
+
+    .wpm-chat-messages{
+
+        flex:1;
+
+        min-height:0;
+
+    }
+    .wpm-chat-footer{
+
+        position:sticky;
+
+        bottom:0;
+
+        width:100%;
+
+        background:#fff;
+
+        z-index:10;
+
+        padding-bottom:
+        calc(
+            12px + env(safe-area-inset-bottom)
+        );
+
+    }
+
+}
