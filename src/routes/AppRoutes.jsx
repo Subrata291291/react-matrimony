@@ -14,13 +14,13 @@ function AppRoutes() {
 
   return (
 
-    <BrowserRouter basename="/app">
+    <BrowserRouter>
 
       <Routes>
 
         <Route
           path="/"
-            element={
+          element={
             <ProtectedRoute>
               <Home />
             </ProtectedRoute>
@@ -29,7 +29,7 @@ function AppRoutes() {
 
         <Route
           path="/discover"
-           element={
+          element={
             <ProtectedRoute>
               <Discover />
             </ProtectedRoute>
